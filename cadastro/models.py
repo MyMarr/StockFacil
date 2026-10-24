@@ -24,9 +24,9 @@ class Produto(models.Model):
 #Criando
 
 class Quantidade(models.Model): 
-
-    #workload
-    quantidade_produto = models.PositiveIntegerField(verbose_name="Quantidade produto(s)", default=0)   
+    quantidade_produto = models.PositiveIntegerField(
+        verbose_name="Quantidade produto(s)", 
+        default=0)   
 
     produto = models.ForeignKey(
         Produto, 
@@ -40,9 +40,6 @@ class Quantidade(models.Model):
 
     def __str__(self):
         return f"{self.quantidade_produto}X"
-
-        #    def __str__(self):
-        #return f"{self.quantidade_produto}X {self.produto.nome_produto}
 
 class Preco(models.Model):
     

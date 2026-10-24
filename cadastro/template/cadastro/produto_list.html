@@ -1,0 +1,34 @@
+<!--
+Templates do app. O Django encontra essa pasta sozinho 
+
+O Bootstrap é uma biblioteca de CSS pronta: você coloca classes no HTML (btn, table, container) e ganha botões e tabelas bonitos sem escrever CSS.-->
+
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Produtos</title>
+</head>
+<body>
+    <h1>Produtos</h1>
+
+    {% for produto in produtos %}
+        <p>{{ produto }}</p>
+    {% empty %}
+        <p>Nenhum produto cadastrado.</p>
+    {% endfor %}
+
+    {% if is_paginated %}
+        {% if page_obj.has_previous %}
+            <a href="?page={{ page_obj.previous_page_number }}">Anterior</a>
+        {% endif %}
+
+        <span>Página {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}</span>
+
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}">Próxima</a>
+        {% endif %}
+    {% endif %}
+</body>
+</html>
